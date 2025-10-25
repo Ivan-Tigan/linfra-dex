@@ -9,5 +9,9 @@ services:
       - "5558:5558"
     volumes:
       - ./config.yaml:/etc/dex/config.yaml:ro
+      - dex-data:/var/dex
     command: ["dex", "serve", "/etc/dex/config.yaml"]
     restart: unless-stopped
+
+volumes:
+  dex-data:
