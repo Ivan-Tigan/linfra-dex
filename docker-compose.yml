@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  dex:
+    image: ghcr.io/dexidp/dex:v2.37.0
+    container_name: dex-oidc
+    ports:
+      - "5556:5556"
+      - "5558:5558"
+    volumes:
+      - ./config.yaml:/etc/dex/config.yaml:ro
+    command: ["dex", "serve", "/etc/dex/config.yaml"]
+    restart: unless-stopped
