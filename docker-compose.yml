@@ -4,12 +4,13 @@ services:
   dex:
     build: .
     container_name: dex-oidc
-    ports:
-      - "5556:5556"
-      - "5558:5558"
+    network_mode: host
     volumes:
       - dex-data:/var/dex
     restart: unless-stopped
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
 
 volumes:
   dex-data:
